@@ -1,4 +1,4 @@
-def purge(word: list):
+def purge(words: list):
     """
     Takes a list of strings and returns a list that only contains elements with
     - a length of 5
@@ -90,7 +90,7 @@ def letter_distribution(words, print_d = True):
 
     return [round(frequency[i]/total,4) for i in range(26)]
 
-def word_score(words,frequency):
+def word_score(words,frequency, printw = True):
     """
     Takes as input a list of words and a list of frequency's of each letter of the alphabet, and returns
     - a list representing the top 5 highest scoring words (not counting duplicate letters)
@@ -102,8 +102,10 @@ def word_score(words,frequency):
                 score[i] += frequency[ord(words[i][j]) - 97]
 
     score, words = zip(*sorted(zip(score,words),reverse=True))
-    for i in range(min(5,len(words))):
-        print(f"{words[i]}: {score[i]}")
+    if printw:
+        for i in range(min(5,len(words))):
+            print(f"{words[i]}: {score[i]}")
+    return words
 
 def openf(file_name):
     """
