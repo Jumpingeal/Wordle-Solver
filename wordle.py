@@ -28,6 +28,19 @@ def exclude(char: str,word_list):
             new_words += [word]
     return new_words
 
+def include(char: str, word_list):
+    """
+    Takes a character as input and a list of strings (words) and returns a list containing
+    - words that contain the inputted character in them somewhere
+    """
+    new_words = []
+    for word in word_list:
+        for wordChar in word:
+            if wordChar == char:
+                new_words += [word]
+                break
+    return new_words
+
 def exclude_position(char: str, index: list, word_list):
     """
     Takes a string as input, an index position an da list of strings (words) and returns a list containing
@@ -138,6 +151,7 @@ if __name__ == "__main__":
                 words = exclude([letters[i]],words)
             elif result == "y":
                 words = exclude_position(letters[i],[i],words)
+                words = include(letters[i],words)
             elif result == "g":
                 words = include_position(letters[i],[i],words)
                 green_count += 1
@@ -146,7 +160,3 @@ if __name__ == "__main__":
             break
         frequency = letter_distribution(words,False)
         word_score(words,frequency)
-    
-    
-        
-    
