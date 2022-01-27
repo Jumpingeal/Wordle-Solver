@@ -2,7 +2,7 @@ from wordle import *
 import random
 
 if __name__ == "__main__":
-    all_words = purge(openf("wordlist.10000.txt"))
+    all_words = purge(openf("wordlist-wordle.txt"))
     
     
     
